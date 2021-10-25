@@ -2,20 +2,26 @@
 - name: springboot as linux
   hosts: appserver
   become: yes
+  vars: 
+    java_package: openjdk-11-jdk
+    app_dir: /usr/share/springpetclinic
+    app_download_url: https://referenceapplicationskhaja.s3-us-west-2.amazonaws.com/spring-petclinic-2.4.2.jar
+    app_file_name: /usr/share/springpetclinic/spring-petclinic-2.4.2.jar
+    app_username: springbootuser 
   tasks:
     - name: updating the ubuntu packages 
       apt:
-        name: openjdk-11-jdk 
+        name: {{java_package}} 
         update_cache: yes
         state: present 
     - name: creating a directory 
       file:
-        path: /usr/share/springpetclinic
+        path: {{app_dir}}
         state: directory
     - name: download the springpet clinic directory
       get_url:
-        url: https://referenceapplicationskhaja.s3-us-west-2.amazonaws.com/spring-petclinic-2.4.2.jar
-        dest: /usr/share/springpetclinic/spring-petclinic-2.4.2.jar
+        url: {{app_download_url}}
+        dest: {{app_file_name}}
     - name: adding the springbootuser 
       user:
         name: springbootuser
@@ -23,9 +29,9 @@
         state: present 
     - name: changing the ownership of file and directory
       file:
-        path: /usr/share/springpetclinic/spring-petclinic-2.4.2.jar
-        owner: springbootuser
-        group: springbootuser
+        path: {{app_file_name}}
+        owner: {{app_username}}
+        group: {{app_username}}
         mode: '500'
         state: file
     - name: copying the springpetclinic service file 
