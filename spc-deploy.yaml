@@ -31,8 +31,8 @@
     - name: copying the springpetclinic service file 
       copy: 
         file:
-          dest: /etc/systemd/system/springpetclinic.service
           src: springpetclinic.service/
+          dest: /etc/systemd/system/springpetclinic.service
     - name: enable and start the springpetclinic service 
       systemd:
         name: springpetclinic.service 
