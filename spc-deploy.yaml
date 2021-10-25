@@ -1,0 +1,18 @@
+---
+name: springboot as linux
+hosts: appserver
+become: yes
+tasks:
+  - name: updating the ubuntu packages 
+    apt:
+      name: apache2 
+      update_cache: yes
+      state: present 
+  - name: creating a directory 
+    file:
+      path: /usr/share/springpetclinic
+      state: directory
+  - name: download the springpet clinic directory
+    get_url:
+      url: https://referenceapplicationskhaja.s3-us-west-2.amazonaws.com/spring-petclinic-2.4.2.jar
+      dest: /usr/share/springpetclinic/spring-petclinic-2.4.2.jar
