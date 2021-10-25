@@ -5,7 +5,7 @@
   tasks:
     - name: updating the ubuntu packages 
       apt:
-        name: apache2 
+        name: openjdk-11-jdk 
         update_cache: yes
         state: present 
     - name: creating a directory 
