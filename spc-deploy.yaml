@@ -18,7 +18,7 @@
         var: test_var
     - name: updating the ubuntu packages and installing the java package 
       apt:
-        name: {{java_package}} 
+        name: {{ java_package }} 
         update_cache: yes
         state: present 
     - name: creating a directory 
