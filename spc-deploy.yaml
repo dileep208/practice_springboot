@@ -10,7 +10,7 @@
       when: ansible_facts['distribution'] != "Ubuntu"
     - name: debug message for java
       debug:
-        msg: "java with version {{java_package}} is installed on the insance"
+        msg: "java with version {{java_package}} is installed on the instance"
     - name: updating the ubuntu packages and installing the java package 
       apt:
         name: "{{ java_package }}"
