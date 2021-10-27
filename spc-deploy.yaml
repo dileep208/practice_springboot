@@ -8,6 +8,9 @@
       fail:
         msg: "This playbook will only work for ubuntu distribution and support for other os will be added soon"
       when: ansible_facts['distribution'] != "Ubuntu"
+    - name: debug message for java
+      debug:
+        msg: "java with version {{java_package}} is installed on the insance"
     - name: updating the ubuntu packages and installing the java package 
       apt:
         name: "{{ java_package }}"
