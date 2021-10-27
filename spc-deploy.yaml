@@ -25,7 +25,7 @@
       file:
         path: {{app_dir}}
         state: directory
-    - name: download the springpet clinic directory
+    - name: download the springpet clinic jar file 
       get_url:
         url: {{app_download_url}}
         dest: {{app_file_name}}
