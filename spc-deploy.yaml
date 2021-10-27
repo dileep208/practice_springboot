@@ -45,3 +45,33 @@
         name: springpetclinic.service 
         state: started
         enabled: yes
+  handlers:
+    - name: changing ownership of file
+      file:
+        path: "{{app_filename}}"
+        owner: "{{app_username}}"
+        mode: '500'
+        state: file
+    - name: debug message for java
+      debug:
+        msg: "java with version {{java_package}} is installed on the instance"
+    - name: debug message for directory
+      debug:
+        msg: "Directory created at {{app_dir}}"
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
