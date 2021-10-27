@@ -1,2 +1,2 @@
 [local]
-mydreammachine.dileep.com ansible_host=localhost
+mydreammachine.dileep.com ansible_host=localhost ansible_python_interpretor=/usr/bin/python3.6
