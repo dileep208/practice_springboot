@@ -4,6 +4,10 @@
   become: yes
 
   tasks:
+    - name: fail the execution when the distribution is not ubuntu
+      fail:
+        msg: "This playbook will only work for ubuntu distribution and support for other os will be added soon"
+      when: ansible_distribution != "Ubuntu"
     - name: updating the ubuntu packages and installing the java package 
       apt:
         name: "{{ java_package }}"
